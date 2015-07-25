@@ -29,6 +29,8 @@ var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
+var attendeeController = require('./controllers/attendee');
+var restAttendeeController = require('./controllers/rest/attendee');
 
 /**
  * API keys and Passport configuration.
@@ -111,6 +113,23 @@ app.post('/account/profile', passportConf.isAuthenticated, userController.postUp
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
+
+/**
+ * Attendee routes
+ */
+app.get('/attendees/register', attendeeController.getNewAttendee);
+app.post('/attendees/register',attendeeController.postNewAttendee);
+
+
+/**
+ * REST routes
+ */
+app.route('/rest/attendees')
+  .get(restAttendeeController.getAttendees)
+  // .post(restAttendeeController.newAttendee)
+  // .put(restAttendeeController.updateAttendee)
+  // .delete(restAttendeeController.deleteAttendees);
+
 
 /**
  * API examples routes.

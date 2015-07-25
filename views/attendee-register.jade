@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 Attendee register
+  p.Please register here.
+  hr
+  form(action="/attendees/register", method="POST", role="form")
+    legend Form title
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-2(for="firstname") First name
+      input#inputFirstname.form-control(type="text", name="firstname", value="", required="required", title="firt name")
+      label.col-sm-2(for="lastname") Last name
+      input#inputLastname.form-control(type="text", name="lastname", value="", required="required", title="last name")
+      label.col-sm-2(for="email") Email
+      input#inputEmail.form-control(type="text", name="email", value="", required="required", title="email")
+      label.col-sm-2(for="cellphone") Cell phone
+      input#inputCellphone.form-control(type="text", name="cellphone", value="", required="required", title="cellphone")
+    button.btn.btn-primary(type="submit") Submit

@@ -48,3 +48,44 @@ describe('GET /random-url', function() {
       .expect(404, done);
   });
 });
+
+
+//Attendees rest API
+describe('Rest Attendees API', function () {
+
+  describe('GET /rest/attendees', function () {
+    it('should return 200 OK', function(done){
+      request(app)
+        .get('/rest/attendees')
+        .expect(200,done);
+    });
+  });
+
+  // describe('POST /rest/attendees', function () {
+  //   it('should return 200 OK', function(done){
+  //     request(app)
+  //       .post('/rest/attendees')
+  //       .expect(200,done);
+  //   });
+  // });
+
+  // describe('PUT /rest/attendees', function () {
+  //   it('should return 200 OK', function(done){
+  //     request(app)
+  //       .put('/rest/attendees')
+  //       .expect(200,done);
+  //   });
+  // });
+
+  // describe('DELETE /rest/attendees', function () {
+  //   it('should return 200 OK', function(done){
+  //     request(app)
+  //       .delete('/rest/attendees')
+  //       .expect(200,done);
+  //   });
+  // });
+
+    
+
+  
+});

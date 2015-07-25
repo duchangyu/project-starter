@@ -1,6 +1,7 @@
 var chai = require('chai');
 var should = chai.should();
 var User = require('../models/User');
+var Attendee = require('../models/Attendee');
 
 describe('User Model', function() {
   it('should create a new user', function(done) {
@@ -39,4 +40,53 @@ describe('User Model', function() {
       done();
     });
   });
+});
+
+
+
+
+describe('Attendee Model', function () {
+
+  it('should create a new attendee', function(done){
+
+    var atten = new Attendee({
+      firstname : 'daniel',
+      lastname : 'du',
+      contact : {
+        email : 'daniel.du@autodeks.com',
+        cellphone : '18600503761'
+      }
+    });
+
+    atten.save(function(err){
+      if(err) return done(err);
+
+      done();
+    })
+
+  })
+
+  it('should not create attendee with same name', function(done){
+    var atten = new Attendee({
+      firstname : 'daniel',
+      lastname : 'du',
+      contact : {
+        email : 'daniel.du@autodeks.com',
+        cellphone : '18600503761'
+      }
+    });
+
+    atten.save(function(err){
+      if (err) err.code.should.equal(11000);
+      done();
+    })
+
+  })
+
+  it('should remove an attendee with same name', function(done){
+
+    done();
+
+  })
+  
 });
