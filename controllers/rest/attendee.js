@@ -5,6 +5,8 @@ var attendee = require('../../models/Attendee.js');
 //
 exports.newAttendee = function(req,res){
 
+
+
   var newAttendee = new attendee(
   {
     firstname : req.body.firstname,

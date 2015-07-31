@@ -1,11 +1,11 @@
-extends layout
+extends ../layout
 
 block content
-  h1 Attendee register
+  h1 #{title}
   p.Please register here.
   hr
   form(action="/attendees/register", method="POST", role="form")
-    legend Form title
+    legend register to attend the conference
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
       label.col-sm-2(for="firstname") First name

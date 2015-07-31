@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  h1 #{title}
+  
+  hr
+
+  table.table.table-hover.table-striped.table-responsive
+    thead
+      tr
+        th First name
+        th Last name
+        th Email
+        th cellphone
+        th Edit
+        th Delete
+    tbody
+      each attendee in attendees
+        tr
+          td #{attendee.firstname}
+          td #{attendee.lastname}
+          td #{attendee.contact.email}
+          td #{attendee.contact.cellphone}
+          td 
+            a.btn(href="/attendees/edit?id=#{attendee.id}") 
+              i.glyphicon.glyphicon-edit
+          td 
+            a.btn(href="/attendees/delete?id=#{attendee.id}")
+              i.glyphicon.glyphicon-trash
+
+  a.btn(href="/attendees/register") Register
+              i.glyphicon.glyphicon-pencil
+  

@@ -79,7 +79,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(lusca({
-  csrf: true,
+  csrf: false,
   xframe: 'SAMEORIGIN',
   xssProtection: true
 }));
@@ -120,13 +120,18 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 app.get('/attendees/register', attendeeController.getNewAttendee);
 app.post('/attendees/register',attendeeController.postNewAttendee);
 
+app.get('/attendees',attendeeController.getAllAttendees);
+
+app.get('/attendees/edit',attendeeController.getEditAttendee);
+app.post('/attendees/edit', attendeeController.postEditAttendee);
+app.get('/attendees/delete', attendeeController.deleteAttendee );
 
 /**
  * REST routes
  */
 app.route('/rest/attendees')
   .get(restAttendeeController.getAttendees)
-  // .post(restAttendeeController.newAttendee)
+  .post(restAttendeeController.newAttendee)
   // .put(restAttendeeController.updateAttendee)
   // .delete(restAttendeeController.deleteAttendees);
 

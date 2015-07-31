@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  h1 #{title}
+  hr
+  form(action="/attendees/edit", method="POST", role="form")
+    legend edit your registration
+    input(type='hidden', name='_csrf', value=_csrf)
+    input(type='hidden', name='attendeeId', value="#{attendee.id}")
+    .form-group
+      label.col-sm-2(for="firstname") First name
+      input#inputFirstname.form-control(type="text", name="firstname", value="#{attendee.firstname}", required="required", title="firt name")
+      label.col-sm-2(for="lastname") Last name
+      input#inputLastname.form-control(type="text", name="lastname", value="#{attendee.lastname}", required="required", title="last name")
+      label.col-sm-2(for="email") Email
+      input#inputEmail.form-control(type="text", name="email", value="#{attendee.contact.email}", required="required", title="email")
+      label.col-sm-2(for="cellphone") Cell phone
+      input#inputCellphone.form-control(type="text", name="cellphone", value="#{attendee.contact.cellphone}", required="required", title="cellphone")
+    button.btn.btn-primary(type="submit") Submit
